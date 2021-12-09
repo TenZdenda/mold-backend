@@ -23,7 +23,7 @@ namespace WebApiUnitTest
         
         public IEnumerable<Record> GetAll()
         {
-            return _records.OrderByDescending(r => r.CreatedAt);
+            return _records;
         }
 
         public List<object> GetAvgTemperature()
