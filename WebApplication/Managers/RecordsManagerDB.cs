@@ -7,7 +7,7 @@ namespace WebApplication.Managers
 {
     public class RecordsManagerDb : IRecordsManager
     {
-        private RecordContext _context;
+        private readonly RecordContext _context;
 
         public RecordsManagerDb(RecordContext context)
         {
@@ -35,27 +35,32 @@ namespace WebApplication.Managers
         {
             IEnumerable<Record> records = from record in _context.Records select record;
 
-            return records;
+            return records.OrderByDescending(r => r.CreatedAt);
         }
 
-        public List<double> getAvgTemperature()
+        public List<object> GetAvgTemperature()
         {
             var temperature = from record in _context.Records
                 group record.Temperature by record.CreatedAt.Date
                 into g
-                select g.Average();
+                select new { Temperature = g.Average(), CreatedAt = g.Key };
 
-            return temperature.ToList();
+            return new List<object> {temperature.OrderBy(o => o.CreatedAt).ToList()};
         }
 
-        public List<double> getAvgHumidity()
+        public List<object> GetAvgHumidity()
         {
             var humidity = from record in _context.Records
                 group record.Humidity by record.CreatedAt.Date
                 into g
-                select g.Average();
+                select new {Humidity = g.Average(), CreatedAt = g.Key};
 
-            return humidity.ToList();
+            return new List<object> {humidity.OrderBy(o => o.CreatedAt).ToList()};
+        }
+
+        public Record GetLastRecord(string device)
+        {
+            return _context.Records.OrderByDescending(r => r.CreatedAt).FirstOrDefault(r => r.Device.ToLower() == device.ToLower());
         }
 
         public Record GetById(int id)

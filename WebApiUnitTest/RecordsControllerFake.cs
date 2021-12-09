@@ -54,7 +54,7 @@ namespace WebApiUnitTest
         [HttpGet("avgTemp")]
         public ActionResult<List<double>> GetAvgTemperature()
         {
-            var result = _manager.getAvgTemperature();
+            var result = _manager.GetAvgTemperature();
 
             return Ok(result);
         }
@@ -63,7 +63,7 @@ namespace WebApiUnitTest
         [HttpGet("avgHumi")]
         public ActionResult<List<double>> GetAvgHumidity()
         {
-            var result = _manager.getAvgHumidity();
+            var result = _manager.GetAvgHumidity();
 
             return Ok(result);
         }

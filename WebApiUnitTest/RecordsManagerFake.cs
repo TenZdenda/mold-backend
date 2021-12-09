@@ -23,27 +23,32 @@ namespace WebApiUnitTest
         
         public IEnumerable<Record> GetAll()
         {
-            return _records;
+            return _records.OrderByDescending(r => r.CreatedAt);
         }
 
-        public List<double> getAvgTemperature()
+        public List<object> GetAvgTemperature()
         {
             var temperature = from record in _records
                 group record.Temperature by record.CreatedAt.Date
                 into g
-                select g.Average();
-            
-            return temperature.ToList(); 
+                select new { Temperature = g.Average(), CreatedAt = g.Key };
+
+            return new List<object> {temperature.OrderBy(o => o.CreatedAt).ToList()};
         }
 
-        public List<double> getAvgHumidity()
+        public List<object> GetAvgHumidity()
         {
             var humidity = from record in _records
                 group record.Humidity by record.CreatedAt.Date
                 into g
-                select g.Average();
+                select new {Humidity = g.Average(), CreatedAt = g.Key};
 
-            return humidity.ToList();
+            return new List<object> {humidity.OrderBy(o => o.CreatedAt).ToList()};
+        }
+
+        public Record GetLastRecord(string device)
+        {
+            throw new NotImplementedException();
         }
 
         public Record Add(Record record)

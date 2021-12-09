@@ -11,8 +11,8 @@ namespace WebApplication.Managers
         Record GetById(int id);
         IEnumerable<Record> GetByDevice(string device);
         IEnumerable<Record> GetAll(); 
-        List<double> getAvgTemperature();
-        List<double> getAvgHumidity();
-
+        List<object> GetAvgTemperature();
+        List<object> GetAvgHumidity();
+        Record GetLastRecord(string device);
     }
 }
