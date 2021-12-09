@@ -22,11 +22,8 @@ jobs:
           dotnet-version: '5.0.x'
           include-prerelease: true
 
-      - name: Restore dependencies
-        run: dotnet restore 
-
       - name: Build with dotnet
-        run: dotnet build --configuration --no-restore Release
+        run: dotnet build --configuration Release
 
       - name: Unit tests
         run: dotnet test --no-build --verbosity normal
