@@ -38,18 +38,48 @@ namespace WebApiUnitTest
 
             return Ok(result);
         }
+        
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpGet("device/{device}")]
+        public ActionResult<Record> GetDevice(string device)
+        {
+            IEnumerable<Record> result = _manager.GetByDevice(device);
+            if (!result.Any()) return NoContent();
 
-        [ProducesResponseType(StatusCodes.Status201Created)]
+            return Ok(result);
+        }
+        
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("avgTemp")]
+        public ActionResult<List<double>> GetAvgTemperature()
+        {
+            var result = _manager.getAvgTemperature();
+
+            return Ok(result);
+        }
+        
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("avgHumi")]
+        public ActionResult<List<double>> GetAvgHumidity()
+        {
+            var result = _manager.getAvgHumidity();
+
+            return Ok(result);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public ActionResult<Record> Post([FromBody] Record record)
+        public ActionResult Post([FromBody] Record newRecord)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            var item = _manager.Add(record);
-            return Ok(item);
+            var result = _manager.Add(newRecord);
+            return Ok(result);
         }
     }
 }

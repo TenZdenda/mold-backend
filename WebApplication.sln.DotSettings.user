@@ -1,9 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d615b8b2_002D01f9_002D46c3_002Da796_002De16a3459f03b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test_Get_Specific_Record_Unknown_Id_Returns_Not_Found_Result" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d615b8b2_002D01f9_002D46c3_002Da796_002De16a3459f03b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test_Get_Specific_Record_Unknown_Id_Returns_Not_Found_Result" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Specific_Record_Unknown_Id_Returns_Not_Found_Result&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Create_New_Record&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Create_New_Record_With_Wrong_Record_Model_Returns_Bad_Request&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Specific_Record_Returns_Record&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Records_Based_On_Device_Returns_Ok_Result&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Records_Based_On_Device_Returns_Not_Found&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Avg_Temperature_Returns_Ok_Result&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::CEB794EC-8FBA-48C5-A8DF-A25E6F31C915::net5.0::WebApiUnitTest.MoldUnitTest.Test_Get_Avg_Humidity_Returns_Ok_Result&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=debcffbb_002D3d19_002D4fbd_002Db7c1_002D74ebc0998830/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test_User_Can_See_All_Records" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=debcffbb_002D3d19_002D4fbd_002Db7c1_002D74ebc0998830/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test_User_Can_See_All_Records" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/zdenekpasek/www/mold-backend/WebApiUnitTest" Presentation="&amp;lt;WebApiUnitTest&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

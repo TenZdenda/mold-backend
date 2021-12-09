@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 using Record = WebApplication.Models.Record;
@@ -40,25 +41,17 @@ namespace WebApiUnitTest
         [Fact]
         public void Test_Get_Specific_Record_Unknown_Id_Returns_Not_Found_Result()
         {
-            // Act
             var result = _controller.Get(1000);
-            // Assert
+            
             Assert.IsType<NotFoundObjectResult>(result.Result);
         }
         
-        /*[Fact]
+        [Fact]
         public void Test_Get_Specific_Record_Returns_Record()
         {
-            // Act
             var result = _controller.Get(1);
 
-            // Assert
             Assert.IsType<OkObjectResult>(result.Result);
-            Assert.IsType<Record>(result.Value);
-            
-            //var record = result.Value;
-            //Assert.Equal(1, record.Id);
-            //Assert.Equal(20, record.Temperature);
         }
 
         [Fact]
@@ -66,6 +59,7 @@ namespace WebApiUnitTest
         {
             var testRecord = new Record()
             {
+                Id = 5,
                 Temperature = 25,
                 Humidity = 100,
                 Device = "Device-01",
@@ -82,6 +76,7 @@ namespace WebApiUnitTest
         {
             var humidityMissingRecord = new Record()
             {
+                Id = 6,
                 Temperature = 20,
                 Device = "Device-02",
                 CreatedAt = new DateTime(2021, 12, 08, 12, 00, 00)
@@ -91,6 +86,50 @@ namespace WebApiUnitTest
             var badResponse = _controller.Post(humidityMissingRecord);
             
             Assert.IsType<BadRequestObjectResult>(badResponse);
-        }*/
+        }
+
+        [Fact]
+        public void Test_Get_Records_Based_On_Device_Returns_Ok_Result()
+        {
+            var result = _controller.GetDevice("device-01");
+
+            Assert.IsType<OkObjectResult>(result.Result);
+        }
+        
+        [Fact]
+        public void Test_Get_Records_Based_On_Device_Returns_Not_Found()
+        {
+            var result = _controller.GetDevice("device-10");
+
+            Assert.IsType<NoContentResult>(result.Result);
+        }
+
+        [Fact]
+        public void Test_Get_Avg_Temperature_Returns_Ok_Result()
+        {
+            var expectedValue = 23;
+
+            var result = _controller.GetAvgTemperature();
+            
+            var items = result.Result as OkObjectResult;
+            var list = items.Value as List<double>;
+            
+            Assert.IsType<List<double>>(items.Value);
+            Assert.Equal(expectedValue, list.First());
+        }
+        
+        [Fact]
+        public void Test_Get_Avg_Humidity_Returns_Ok_Result()
+        {
+            var expectedValue = 115;
+
+            var result = _controller.GetAvgHumidity();
+            
+            var items = result.Result as OkObjectResult;
+            var list = items.Value as List<double>;
+            
+            Assert.IsType<List<double>>(items.Value);
+            Assert.Equal(expectedValue, list.First());
+        }
     }
 }

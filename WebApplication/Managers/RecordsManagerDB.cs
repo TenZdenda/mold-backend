@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebApplication.Models;
@@ -35,6 +36,26 @@ namespace WebApplication.Managers
             IEnumerable<Record> records = from record in _context.Records select record;
 
             return records;
+        }
+
+        public List<double> getAvgTemperature()
+        {
+            var temperature = from record in _context.Records
+                group record.Temperature by record.CreatedAt.Date
+                into g
+                select g.Average();
+
+            return temperature.ToList();
+        }
+
+        public List<double> getAvgHumidity()
+        {
+            var humidity = from record in _context.Records
+                group record.Humidity by record.CreatedAt.Date
+                into g
+                select g.Average();
+
+            return humidity.ToList();
         }
 
         public Record GetById(int id)
